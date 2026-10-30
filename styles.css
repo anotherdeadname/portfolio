@@ -248,10 +248,9 @@ a:hover {
     text-overflow: ellipsis;
   }
 
+  /* no room for the note on phones; titles get the space */
   .row .note {
-    flex: none;
-    padding: 0.15rem 0.5rem;
-    font-size: 0.6875rem;
+    display: none;
   }
 
   /* match the title's line box so the year sits on the same line */
