@@ -460,13 +460,14 @@ a.row:focus-visible .thumb img {
 }
 
 /* Case study: one image, title, summary and resume-style bullets */
-/* The back button stays pinned top-left of the column while the case scrolls.
-   It keeps its spot in the header, so nothing jumps; a solid fill keeps it
-   readable over the content passing underneath. */
+/* The back button stays pinned beside the column while the case scrolls.
+   A solid fill keeps it readable if content ever passes underneath. */
 .back {
   position: fixed;
   top: var(--header-pad);
-  left: max(var(--gutter), calc((100% - var(--column)) / 2 + var(--gutter)));
+  /* sits in the left margin, 24px outside the content column;
+     on narrow screens with no margin it falls back to the 16px edge */
+  left: max(var(--space-2), calc((100% - var(--column)) / 2 + var(--gutter) - 44px - var(--space-3)));
   z-index: 20;
   display: inline-grid;
   place-items: center;
