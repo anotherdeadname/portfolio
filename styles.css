@@ -190,10 +190,13 @@ a:hover {
   position: relative;
 }
 
+/* Grid keeps the year and arrow vertically centred on the row */
 .row {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  grid-template-areas: "thumb text year arrow";
   align-items: center;
-  gap: var(--space-2);
+  column-gap: var(--space-2);
   margin-inline: calc(var(--space-1) * -1);
   padding: var(--space-2) var(--space-1);
   border-radius: 12px;
@@ -212,10 +215,21 @@ a:hover {
   overflow: hidden;
 }
 
+.thumb { grid-area: thumb; }
+.row-text { grid-area: text; }
+.row-year { grid-area: year; }
+.row-arrow { grid-area: arrow; }
+
+/* On phones the year sits under the description so titles keep their width */
 @media (max-width: 480px) {
   .row {
-    align-items: flex-start;
-    gap: 0.875rem;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "thumb text arrow"
+      "thumb year arrow";
+    align-items: start;
+    column-gap: 0.875rem;
+    row-gap: 0.25rem;
   }
 
   .thumb {
@@ -239,10 +253,6 @@ a:hover {
   flex-direction: column;
   gap: 0.25rem;
   min-width: 0;
-}
-
-.row-text {
-  flex: 1;
 }
 
 /* The arrow marks each row as a link, so titles have no underline */
@@ -276,21 +286,10 @@ a:hover {
 }
 
 .row-year {
-  margin-left: auto;
-  padding-left: var(--space-2);
   font-size: 1rem;
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
-}
-
-/* On phones the year drops under the title so titles keep their width */
-@media (max-width: 480px) {
-  .row-year {
-    order: 3;
-    flex-basis: 100%;
-    margin-left: 0;
-    padding-left: 0;
-  }
+  white-space: nowrap;
 }
 
 .row-arrow {
