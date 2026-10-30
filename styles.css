@@ -508,19 +508,35 @@ a:hover {
   content: " · " / "";
 }
 
+/* Social icons: 18px marks inside 44px tap targets */
 .footer-links {
   display: flex;
-  gap: var(--space-3);
-  margin: 0;
+  gap: 0.25rem;
+  margin: 0 -13px 0 0; /* optically align the last icon with the column edge */
   padding: 0;
   list-style: none;
 }
 
 .footer-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.footer-links a:hover {
   color: var(--text);
+  background: var(--hairline);
+}
+
+/* On phones the icons wrap under the time line, so align the first one left */
+@media (max-width: 480px) {
+  .footer-links {
+    margin: 0 0 0 -13px;
+  }
 }
 
 img {
