@@ -2,7 +2,7 @@
 
 :root {
   --font-sans: "Inclusive Sans", system-ui, sans-serif;
-  --font-mono: "DM Mono", ui-monospace, monospace;
+  --font-mono: "Space Mono", ui-monospace, monospace;
 
   /* type scale: everything derives from one 15px base */
   --size-base: 0.9375rem;                         /* 15px */
@@ -390,10 +390,12 @@ a.row:focus-visible .thumb img {
   color: var(--text-muted);
 }
 
+/* Dates read as mono labels, like the case meta and footer */
 .row-year {
-  font-size: var(--size-sm);
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  letter-spacing: 0.04em;
   color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
