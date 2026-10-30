@@ -64,6 +64,19 @@
   }
 }
 
+/* Case pages keep at least 24px either side of the content.
+   --column is restated so it picks up this page's gutter. */
+.case-page {
+  --gutter: calc(var(--unit) * 3);
+  --column: calc(600px + 2 * var(--gutter));
+}
+
+@media (min-width: 600px) {
+  .case-page {
+    --gutter: calc(var(--unit) * 4);
+  }
+}
+
 @media (max-width: 480px) {
   :root {
     --thumb-w: calc(var(--unit) * 9);      /* 72px */
@@ -476,8 +489,8 @@ a.row:focus-visible .thumb img {
   position: fixed;
   top: var(--back-top);
   /* sits in the left margin, 24px outside the content column;
-     on narrow screens with no margin it falls back to the 16px edge */
-  left: max(var(--space-2), calc((100% - var(--column)) / 2 + var(--gutter) - 44px - var(--space-3)));
+     on narrow screens with no margin it falls back to the page's side padding */
+  left: max(var(--gutter), calc((100% - var(--column)) / 2 + var(--gutter) - 44px - var(--space-3)));
   z-index: 20;
   display: inline-grid;
   place-items: center;
