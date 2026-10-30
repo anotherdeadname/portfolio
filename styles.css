@@ -581,6 +581,38 @@ a.row:focus-visible .thumb img {
   color: var(--text-muted);
 }
 
+/* Side projects end with a link to where the work lives */
+.account {
+  margin: 0;
+}
+
+.account a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 44px;
+  font-weight: var(--weight-medium);
+  color: var(--text);
+}
+
+.account-handle {
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.account-arrow {
+  flex: none;
+  transition: transform 0.15s ease;
+}
+
+.account a:hover .account-arrow {
+  transform: translate(2px, -2px);
+}
+
 /* Previous and next case studies */
 .pager {
   display: grid;
@@ -708,6 +740,24 @@ img {
     from { opacity: 0; transform: scale(0.98); }
   }
 
+  @keyframes back-pop {
+    0%   { opacity: 0; transform: scale(0.6); }
+    70%  { opacity: 1; transform: scale(1.08); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes back-pop-out {
+    to { opacity: 0; transform: scale(0.6); }
+  }
+
+  .case-page .back {
+    animation: back-pop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both;
+  }
+
+  .case-page.is-leaving .back {
+    animation: back-pop-out 0.2s cubic-bezier(0.4, 0, 1, 1) both;
+  }
+
   @keyframes case-rise {
     from { opacity: 0; transform: translateY(12px); }
   }
@@ -716,7 +766,7 @@ img {
     animation: case-hero-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 
-  .case-page :is(.case-title, .case-summary, .case-meta, .case-points li, .pager) {
+  .case-page :is(.case-title, .case-summary, .case-meta, .case-points li, .account, .pager) {
     animation: case-rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) var(--rise-delay, 0s) both;
   }
 
@@ -727,6 +777,7 @@ img {
   .case-points li:nth-child(2) { --rise-delay: 0.35s; }
   .case-points li:nth-child(3) { --rise-delay: 0.40s; }
   .case-points li:nth-child(n + 4) { --rise-delay: 0.45s; }
+  .account      { --rise-delay: 0.30s; }
   .pager        { --rise-delay: 0.55s; }
 
   /* Closing a case (see case.js): everything fades and sinks away together */
@@ -734,7 +785,7 @@ img {
     to { opacity: 0; transform: translateY(8px); }
   }
 
-  .case-page.is-leaving :is(.hero, .case-title, .case-summary, .case-meta, .case-points li, .pager) {
+  .case-page.is-leaving :is(.hero, .case-title, .case-summary, .case-meta, .case-points li, .account, .pager) {
     animation: case-leave 0.26s cubic-bezier(0.4, 0, 1, 1) both;
   }
 }
