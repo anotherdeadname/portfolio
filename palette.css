@@ -6,13 +6,25 @@
 
   /* accent (green) */
   --accent:      oklch(67.6% 0.110 142);  /* sage: fills, backgrounds, large shapes */
-  --accent-ink:  oklch(47.3% 0.107 145);  /* deeper green: links, small text */
-  --on-accent:   oklch(23.1% 0.004 85);   /* charcoal text on green fills */
+  --accent-ink:  oklch(44.5% 0.107 145);  /* deeper green: links, small text */
+  --on-accent:   oklch(14% 0.004 85);     /* near-black text on green fills */
+
+  /* lines */
+  --hairline:      oklch(90% 0.02 100);   /* dividers, rules (decorative) */
+  --border-strong: oklch(60% 0.02 95);    /* media frames, 3:1+ */
 }
 
 :root[data-theme="dark"] {
   --bg:          oklch(23.1% 0.004 85);
   --text:        oklch(99.5% 0.022 107);
-  --text-muted:  oklch(72% 0.06 343);     /* lightened plum */
-  --accent-ink:  oklch(67.6% 0.110 142);  /* sage works as link color on dark */
+  --text-muted:  oklch(74% 0.06 343);     /* lightened plum */
+  --accent-ink:  oklch(72.5% 0.110 142);  /* lightened sage for links on dark */
+
+  --hairline:      oklch(33% 0.006 85);
+  --border-strong: oklch(55% 0.01 90);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
 }
