@@ -16,20 +16,28 @@
 
   /* weights: Inclusive Sans is variable, 300 to 700 */
   --weight-regular: 400;   /* body and supporting text */
-  --weight-display: 450;   /* 32px statements and titles, a touch firmer */
+  --weight-display: 450;   /* 30px page titles, a touch firmer */
   --weight-medium: 500;    /* names, row titles, labels */
   --weight-strong: 600;    /* bold proof points */
 
   --column: calc(600px + 2 * var(--gutter)); /* 600px of content plus side padding */
-  --gutter: clamp(16px, 5vw, 32px);
+  --gutter: calc(var(--unit) * 2);              /* 16px; 32px from 600px wide */
   --measure: 68ch;
 
-  /* spacing scale */
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 1.5rem;
-  --space-4: 2.5rem;
-  --space-5: 4rem;
+  /* spacing: everything is a multiple of one 8px unit */
+  --unit: 8px;
+  --space-half: calc(var(--unit) / 2);  /*  4px, tight pairs only (title + description) */
+  --space-1: var(--unit);               /*  8px */
+  --space-2: calc(var(--unit) * 2);     /* 16px */
+  --space-3: calc(var(--unit) * 3);     /* 24px */
+  --space-4: calc(var(--unit) * 5);     /* 40px */
+  --space-5: calc(var(--unit) * 8);     /* 64px */
+}
+
+@media (min-width: 600px) {
+  :root {
+    --gutter: calc(var(--unit) * 4);
+  }
 }
 
 *,
@@ -144,7 +152,7 @@ a:hover {
 
 .peek-card {
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: calc(100% + var(--space-1));
   left: 0;
   z-index: 10;
   width: 168px;
@@ -284,7 +292,7 @@ a:hover {
     grid-template-columns: auto minmax(0, 1fr) auto auto;
     grid-template-areas: "thumb text year arrow";
     align-items: start;
-    column-gap: 0.75rem;
+    column-gap: var(--space-2);
   }
 
   .thumb {
@@ -293,7 +301,7 @@ a:hover {
 
   .row .row-heading {
     flex-wrap: nowrap;
-    column-gap: 0.5rem;
+    column-gap: var(--space-1);
   }
 
   .row-title,
@@ -312,7 +320,7 @@ a:hover {
   }
 
   .row-arrow {
-    margin-top: 0.2rem;
+    margin-top: var(--space-half);
   }
 }
 
@@ -325,7 +333,7 @@ a:hover {
 .row-text {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--space-half);
   min-width: 0;
 }
 
@@ -425,8 +433,8 @@ a.row:focus-visible .thumb img {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: 0.75rem;
-  row-gap: 0.25rem;
+  column-gap: var(--space-1);
+  row-gap: var(--space-half);
 }
 
 /* Case study: one image, title, summary and resume-style bullets */
@@ -493,7 +501,7 @@ a.row:focus-visible .thumb img {
 
 .case-points {
   margin: 0;
-  padding-left: 1.25em;
+  padding-left: var(--space-3);
   max-width: var(--measure);
 }
 
@@ -518,7 +526,7 @@ a.row:focus-visible .thumb img {
 .pager a {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--space-half);
   min-height: 44px;
   color: var(--text);
   text-decoration: none;
@@ -585,7 +593,7 @@ a.row:focus-visible .thumb img {
 /* Socials as short mono letters, like the deck's IG/ IN/ labels */
 .footer-links {
   display: flex;
-  margin: 0 -0.625rem 0 0; /* last letter meets the column edge */
+  margin: 0 calc(var(--space-1) * -1) 0 0; /* last letter meets the column edge */
   padding: 0;
   list-style: none;
 }
@@ -594,7 +602,7 @@ a.row:focus-visible .thumb img {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding-inline: 0.625rem;
+  padding-inline: var(--space-1);
   font-family: var(--font-mono);
   font-size: var(--size-xs);
   font-weight: var(--weight-medium);
@@ -605,7 +613,7 @@ a.row:focus-visible .thumb img {
 /* On phones the links wrap under the time line, so the first letter meets the left edge */
 @media (max-width: 480px) {
   .footer-links {
-    margin: 0 0 0 -0.625rem;
+    margin: 0 0 0 calc(var(--space-1) * -1);
   }
 }
 
