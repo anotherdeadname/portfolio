@@ -8,6 +8,92 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Axel McFarlane</h1>
+  <header class="site-header">
+    <!-- Placeholder: swap the text for the AmC mark (assets/amc-mark.svg) -->
+    <a class="mark" href="index.html" aria-label="Axel McFarlane, home">AmC</a>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark theme">Theme</button>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Axel McFarlane</h1>
+      <p>
+        Staff product designer at <a href="#">Placeholder Co</a>, working on tools
+        that help teams do something useful. Before that I designed at
+        <a href="#">Another Company</a>.
+      </p>
+      <p>
+        I also draw. Some of it lives in my <a href="#">illustration archive</a>.
+      </p>
+    </section>
+
+    <section class="work" aria-labelledby="work-heading">
+      <h2 id="work-heading">Work</h2>
+      <ul class="rows">
+        <li>
+          <a class="row" href="#">
+            <span class="thumb" aria-hidden="true"></span>
+            <span class="row-text">
+              <span class="row-title">Project title one</span>
+              <span class="row-meta">Company · Product design · 2026</span>
+            </span>
+          </a>
+          <!-- Placeholder: hand-drawn circled note goes here (featured project) -->
+          <span class="note">Featured</span>
+        </li>
+        <li>
+          <a class="row" href="#">
+            <span class="thumb" aria-hidden="true"></span>
+            <span class="row-text">
+              <span class="row-title">Project title two</span>
+              <span class="row-meta">Company · Design systems · 2025</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="row" href="#">
+            <span class="thumb" aria-hidden="true"></span>
+            <span class="row-text">
+              <span class="row-title">Project title three</span>
+              <span class="row-meta">Company · Research and strategy · 2024</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="side-projects" aria-labelledby="side-heading">
+      <h2 id="side-heading">Side projects</h2>
+      <ul class="rows">
+        <li>
+          <a class="row" href="#">
+            <span class="thumb" aria-hidden="true"></span>
+            <span class="row-text">
+              <span class="row-title">Side project one</span>
+              <span class="row-meta">Illustration · 2025</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="row" href="#">
+            <span class="thumb" aria-hidden="true"></span>
+            <span class="row-text">
+              <span class="row-title">Side project two</span>
+              <span class="row-meta">Zine · 2023</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+    <ul class="social">
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Read.cv</a></li>
+    </ul>
+  </footer>
 </body>
 </html>
