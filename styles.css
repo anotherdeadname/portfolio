@@ -145,6 +145,11 @@ a:hover {
 }
 
 /* Footnote reads as one muted line: Other titles include: *cat parent *educator ... */
+.current {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-1);
+}
+
 .footnote {
   display: flex;
   flex-wrap: wrap;
@@ -205,12 +210,23 @@ a:hover {
 
 .thumb {
   flex: none;
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  background: var(--hairline); /* placeholder until real thumbnails */
+  width: 112px;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  background: var(--hairline);
   border: 1px solid var(--border-strong);
   overflow: hidden;
+}
+
+/* Hidden until a real image is added inside it */
+.thumb:empty {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .thumb {
+    width: 88px;
+  }
 }
 
 .thumb img {
@@ -249,24 +265,25 @@ a:hover {
   color: var(--text-muted);
 }
 
+/* Title plus an optional note sitting right after it */
+.row-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.75rem;
+  row-gap: 0.25rem;
+}
+
 /* Hand-drawn note placeholder: swap for Axel's illustration */
 .note {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  padding: 0.35rem 0.8rem;
+  padding: 0.3rem 0.75rem;
   border: 1.5px solid var(--text);
   border-radius: 50%;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transform: translateY(-50%) rotate(-6deg);
-  pointer-events: none;
-}
-
-.rows li:has(.note) .row {
-  padding-right: 7.5rem;
+  transform: rotate(-6deg);
 }
 
 /* Case study: one image, title, summary and resume-style bullets */
@@ -407,7 +424,7 @@ a:hover {
 }
 
 .footer-line {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.6;
   margin-bottom: var(--space-4);
 }
