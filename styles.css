@@ -533,3 +533,24 @@ img {
     scroll-behavior: auto !important;
   }
 }
+
+/* Page transitions: the clicked thumbnail grows into the case study's hero
+   image (and shrinks back on Back). Browsers without cross-document view
+   transitions just navigate normally. Each pair shares a view-transition-name,
+   set inline on the home thumbnail and the case page's hero frame. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-group(*) {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    height: 100%;
+    object-fit: cover;
+  }
+}
