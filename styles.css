@@ -169,6 +169,26 @@ a:hover {
   }
 }
 
+/* Header: About link and theme toggle on the right */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.header-actions nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--size-sm);
+  color: var(--text);
+}
+
+/* Current page: a thicker underline, not colour alone */
+.header-actions nav a[aria-current="page"] {
+  text-decoration-thickness: 2px;
+}
+
 .theme-toggle {
   display: inline-grid;
   place-items: center;
@@ -584,6 +604,24 @@ a.row:focus-visible .thumb img {
   .footer-links {
     margin: 0 0 0 -0.625rem;
   }
+}
+
+/* About page: same 700px column as the case studies */
+.about-page {
+  --column: calc(700px + 2 * var(--gutter));
+}
+
+.about-photo {
+  width: 200px;
+  height: auto;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  transform: rotate(-3deg);
+}
+
+.about h1 {
+  margin-bottom: var(--space-3);
 }
 
 img {
