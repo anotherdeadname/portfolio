@@ -144,33 +144,6 @@ a:hover {
   margin-bottom: var(--space-2);
 }
 
-/* Footnote reads as one muted line: Other titles include: *cat parent *educator ... */
-.current {
-  font-size: 1.125rem;
-  margin-bottom: var(--space-1);
-}
-
-.footnote {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 0.75em;
-  color: var(--text-muted);
-  font-size: 1rem;
-}
-
-.footnote p {
-  margin: 0;
-}
-
-.footnote ul {
-  display: contents;
-  list-style: none;
-}
-
-.footnote li::before {
-  content: "*" / "";
-}
-
 /* Home section labels are small and quiet, the rows carry the weight */
 .work h2,
 .side-projects h2 {
