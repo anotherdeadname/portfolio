@@ -15,6 +15,16 @@
   --hairline:      oklch(92% 0.004 280);   /* dividers, rules (decorative) */
   --border-strong: oklch(64% 0.008 280);   /* media frames, 3:1+ */
 
+  /* jewel tones: decorative hover fills only, never text.
+     One lightness and chroma, only the hue changes, so the set reads as
+     a family. 0.16 is the highest chroma all four hues hold in sRGB at 66%. */
+  --jewel-l: 66%;
+  --jewel-c: 0.16;
+  --jewel-magenta:    oklch(var(--jewel-l) var(--jewel-c) 350);
+  --jewel-tangerine:  oklch(var(--jewel-l) var(--jewel-c) 50);
+  --jewel-chartreuse: oklch(var(--jewel-l) var(--jewel-c) 122);
+  --jewel-cobalt:     oklch(var(--jewel-l) var(--jewel-c) 265);
+
   color-scheme: light;
 }
 

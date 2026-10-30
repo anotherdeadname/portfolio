@@ -2,24 +2,62 @@
 
 :root {
   --font-sans: "Inclusive Sans", system-ui, sans-serif;
-  --font-mono: "DM Mono", ui-monospace, monospace;
+  --font-mono: "Space Mono", ui-monospace, monospace;
 
-  /* type scale: four sizes only */
-  --size-xl: clamp(1.5rem, 3.5vw, 2rem); /* 32px statements and page titles */
-  --size-md: 1.1875rem;                  /* 19px body and row titles */
-  --size-sm: 1rem;                       /* 16px supporting text and labels */
-  --size-xs: 0.8125rem;                  /* 13px mono labels */
+  /* type scale: everything derives from one 15px base */
+  --size-base: 0.9375rem;                         /* 15px */
+  --size-lg: calc(var(--size-base) * 4 / 3);      /* 20px home intro */
+  --size-md: var(--size-base);                    /* 15px body and row titles */
+  --size-sm: calc(var(--size-base) * 13 / 15);    /* 13px supporting text and labels */
+  --size-xs: calc(var(--size-base) * 0.8);        /* 12px mono labels */
+  --size-2xs: calc(var(--size-base) * 11 / 15);   /* 11px row dates */
+  --size-xl: clamp(calc(var(--size-base) * 1.6),  /* 24px on phones */
+                   4vw,
+                   calc(var(--size-base) * 2));   /* 30px statements and page titles */
 
-  --column: 800px;
-  --gutter: clamp(16px, 5vw, 32px);
+  /* weights: Inclusive Sans is variable, 300 to 700 */
+  --weight-regular: 400;   /* body and supporting text */
+  --weight-display: 450;   /* 30px page titles, a touch firmer */
+  --weight-medium: 500;    /* names, row titles, labels */
+  --weight-strong: 600;    /* bold proof points */
+
+  --column: calc(600px + 2 * var(--gutter)); /* 600px of content plus side padding */
+  --gutter: calc(var(--unit) * 2);              /* 16px; 32px from 600px wide */
   --measure: 68ch;
 
-  /* spacing scale */
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 1.5rem;
-  --space-4: 2.5rem;
-  --space-5: 4rem;
+  /* spacing: everything is a multiple of one 8px unit */
+  --unit: 8px;
+  --space-half: calc(var(--unit) / 2);  /*  4px, tight pairs only (title + description) */
+  --space-1: var(--unit);               /*  8px */
+  --space-2: calc(var(--unit) * 2);     /* 16px */
+  --space-3: calc(var(--unit) * 3);     /* 24px */
+  --space-4: calc(var(--unit) * 5);     /* 40px */
+  --space-5: calc(var(--unit) * 8);     /* 64px */
+
+  /* layout spacing, named so they can be tuned (open any page with ?tune) */
+  --header-pad:   var(--space-3);   /* above and below the header */
+  --intro-top:    var(--space-3);   /* header to intro */
+  --section-gap:  var(--space-4);   /* between intro, Work, Side projects, AI slop */
+  --label-gap:    var(--space-1);   /* section label to its first row */
+  --row-pad:      var(--space-1);   /* half the space between rows */
+  --row-col-gap:  var(--space-2);   /* thumbnail to text */
+  --row-text-gap: var(--space-half);/* title to description */
+  --footer-top:   var(--space-4);   /* last section to footer */
+
+  /* thumbnails: 3:2 tiles */
+  --thumb-w:      calc(var(--unit) * 12);  /* 96px */
+}
+
+@media (min-width: 600px) {
+  :root {
+    --gutter: calc(var(--unit) * 4);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --thumb-w: calc(var(--unit) * 9);      /* 72px */
+  }
 }
 
 *,
@@ -33,7 +71,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
-  font-size: var(--size-md); /* 19px body */
+  font-size: var(--size-md); /* 15px body */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -48,11 +86,11 @@ main,
 }
 
 main {
-  padding-block: var(--space-3) var(--space-5);
+  padding-block: var(--intro-top) var(--space-5);
 }
 
 section + section {
-  margin-top: var(--space-4);
+  margin-top: var(--section-gap);
 }
 
 /* Type */
@@ -60,14 +98,21 @@ h1,
 h2,
 h3 {
   font-family: var(--font-sans);
-  font-weight: 400;
-  line-height: 1.15;
+  font-weight: var(--weight-medium);
+  line-height: 1.35;
   margin: 0 0 var(--space-2);
 }
 
+/* Display: the intro statement and case titles share one treatment */
 h1 {
   font-size: var(--size-xl);
-  letter-spacing: -0.01em;
+  font-weight: var(--weight-display);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+strong {
+  font-weight: var(--weight-strong);
 }
 
 h2 {
@@ -99,7 +144,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: var(--space-3);
+  padding-block: var(--header-pad);
 }
 
 .mark {
@@ -109,11 +154,65 @@ a:hover {
   min-width: 44px;
   color: var(--text);
   font-size: var(--size-sm);
+  font-weight: var(--weight-medium);
   text-decoration: none;
 }
 
 .mark:hover {
   color: var(--accent-ink);
+}
+
+/* Peeks: hovering a phrase in the intro pops up a small card.
+   "Axel" shows a portrait, "track record" shows a running gif.
+   Swap the image URLs below to change them; a missing image shows a gray card. */
+.peek {
+  position: relative;
+  white-space: nowrap;
+}
+
+.peek-card {
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  left: 0;
+  z-index: 10;
+  width: 168px;
+  aspect-ratio: 5 / 8;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--hairline) center / cover no-repeat;
+  box-shadow: 0 12px 32px oklch(0% 0 0 / 0.25);
+  opacity: 0;
+  transform: translateY(-6px) rotate(var(--tilt)) scale(0.96);
+  transform-origin: top left;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.peek-card--axel {
+  --tilt: -4deg;
+  background-image: url("assets/axel.jpg");
+}
+
+/* Usain Bolt finishing the race, hotlinked from Tenor (tenor.com/view/...-22595436) */
+.peek-card--run {
+  --tilt: 3deg;
+  width: 200px;
+  aspect-ratio: 1;
+  background-image: url("https://media.tenor.com/UhEYaXfAKXYAAAAM/running-usain-bolt.gif");
+}
+
+@media (hover: hover) {
+  .peek:hover .peek-card {
+    opacity: 1;
+    transform: rotate(var(--tilt));
+  }
+}
+
+/* An animated gif can't be paused, so skip it for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .peek-card--run {
+    display: none;
+  }
 }
 
 .theme-toggle {
@@ -141,19 +240,28 @@ a:hover {
 }
 
 /* Kept compact so the work list shows on the first screen */
+/* The intro's first sentence is the home page's one focal point */
 .intro h1 {
-  line-height: 1.3;
+  font-size: var(--size-lg);
+  font-weight: var(--weight-regular);
+  line-height: 1.45;
   letter-spacing: -0.01em;
-  margin-bottom: var(--space-2);
+  max-width: var(--measure);
+  margin-bottom: var(--space-1);
 }
 
+.intro p {
+  margin-bottom: 0;
+}
+
+/* Home section labels are small and quiet, the rows carry the weight */
 /* Home section labels are small and quiet, the rows carry the weight */
 .work h2,
 .side-projects h2,
 .ai-tools h2 {
   font-size: var(--size-sm);
   color: var(--text-muted);
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--label-gap);
 }
 
 /* Work and side project rows */
@@ -170,12 +278,12 @@ a:hover {
 /* Grid keeps the year and arrow vertically centred on the row */
 .row {
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: var(--thumb-w) minmax(0, 1fr) auto 18px;
   grid-template-areas: "thumb text year arrow";
   align-items: center;
-  column-gap: var(--space-2);
+  column-gap: var(--row-col-gap);
   margin-inline: calc(var(--space-1) * -1);
-  padding: var(--space-2) var(--space-1);
+  padding: var(--row-pad) var(--space-1);
   border-radius: 12px;
   color: var(--text);
   text-decoration: none;
@@ -184,7 +292,7 @@ a:hover {
 /* Gray box is the placeholder until an <img> goes inside */
 .thumb {
   flex: none;
-  width: 128px;
+  width: var(--thumb-w);
   aspect-ratio: 3 / 2;
   border-radius: 10px;
   background: var(--hairline);
@@ -201,23 +309,19 @@ a:hover {
    with the year sitting on the title line */
 @media (max-width: 480px) {
   .row {
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    grid-template-columns: var(--thumb-w) minmax(0, 1fr) auto 18px;
     grid-template-areas: "thumb text year arrow";
     align-items: start;
-    column-gap: 0.75rem;
+    column-gap: var(--space-2);
   }
 
-  .thumb {
-    width: 72px;
-  }
 
   .row .row-heading {
     flex-wrap: nowrap;
-    column-gap: 0.5rem;
+    column-gap: var(--space-1);
   }
 
-  .row-title,
-  .row-desc {
+  .row-title {
     display: block;
     min-width: 0;
     white-space: nowrap;
@@ -228,12 +332,11 @@ a:hover {
 
   /* match the title's line box so the year sits on the same line */
   .row-year {
-    font-size: var(--size-xs);
     line-height: calc(var(--size-md) * 1.35);
   }
 
   .row-arrow {
-    margin-top: 0.2rem;
+    margin-top: var(--space-half);
   }
 }
 
@@ -246,18 +349,18 @@ a:hover {
 .row-text {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--row-text-gap);
   min-width: 0;
 }
 
 /* The arrow marks each row as a link, so titles have no underline */
 .row-title {
   font-size: var(--size-md);
+  font-weight: var(--weight-medium);
   line-height: 1.35;
 }
 
-/* Progressive blur: hovering a row blurs the page more the further away it is.
-   Neighbouring rows stay nearly readable; the rest of the page blurs the most. */
+/* Hovering a row blurs everything else on the page by the same amount */
 .site-header,
 .intro,
 .work h2,
@@ -269,29 +372,44 @@ a:hover {
 }
 
 @media (hover: hover) {
-  /* furthest: everything outside the lists */
-  body:has(a.row:hover) :is(.site-header, .intro, .work h2, .side-projects h2, .ai-tools h2, .site-footer) {
-    filter: blur(4px);
-    opacity: 0.4;
-  }
-
-  /* other rows */
+  body:has(a.row:hover) :is(.site-header, .intro, .work h2, .side-projects h2, .ai-tools h2, .site-footer),
   body:has(a.row:hover) .row:not(:hover) {
-    filter: blur(2.5px);
+    filter: blur(3px);
     opacity: 0.5;
-  }
-
-  /* rows right next to the hovered one */
-  .rows li:has(a.row:hover) + li .row,
-  .rows li:has(+ li a.row:hover) .row {
-    filter: blur(1px);
-    opacity: 0.7;
   }
 }
 
 /* Thumbnail tilts gently on hover */
+/* Photos stay black and white until hovered or focused, then go to full
+   colour. Until real images exist, the empty placeholder floods with a
+   jewel tone instead. Decorative fills, never behind text. */
+.rows li:nth-child(4n + 1) .thumb { --jewel: var(--jewel-magenta); }
+.rows li:nth-child(4n + 2) .thumb { --jewel: var(--jewel-cobalt); }
+.rows li:nth-child(4n + 3) .thumb { --jewel: var(--jewel-chartreuse); }
+.rows li:nth-child(4n + 4) .thumb { --jewel: var(--jewel-tangerine); }
+
 .thumb {
-  transition: transform 0.35s ease;
+  transition: transform 0.35s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.thumb img {
+  filter: grayscale(1);
+  transition: filter 0.35s ease;
+}
+
+a.row:focus-visible .thumb img {
+  filter: none;
+}
+
+@media (hover: hover) {
+  a.row:hover .thumb img {
+    filter: none;
+  }
+
+  a.row:hover .thumb:empty {
+    background: var(--jewel);
+    border-color: var(--jewel);
+  }
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -300,16 +418,24 @@ a:hover {
   }
 }
 
+/* Descriptions always stay on one line; longer text ends in "…" */
 .row-desc {
+  display: block;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: var(--size-sm);
   line-height: 1.45;
   color: var(--text-muted);
 }
 
+/* Dates read as mono labels, like the case meta and footer */
 .row-year {
-  font-size: var(--size-sm);
+  font-family: var(--font-mono);
+  font-size: var(--size-2xs);
+  letter-spacing: 0.04em;
   color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
@@ -329,24 +455,34 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: 0.75rem;
-  row-gap: 0.25rem;
+  column-gap: var(--space-1);
+  row-gap: var(--space-half);
 }
 
 /* Case study: one image, title, summary and resume-style bullets */
-.case-page {
-  --column: calc(700px + 2 * var(--gutter));
-}
-
+/* The back button stays pinned beside the column while the case scrolls.
+   A solid fill keeps it readable if content ever passes underneath. */
 .back {
+  position: fixed;
+  top: var(--header-pad);
+  /* sits in the left margin, 24px outside the content column;
+     on narrow screens with no margin it falls back to the 16px edge */
+  left: max(var(--space-2), calc((100% - var(--column)) / 2 + var(--gutter) - 44px - var(--space-3)));
+  z-index: 20;
   display: inline-grid;
   place-items: center;
   width: 44px;
   height: 44px;
   border: 1px solid var(--border-strong);
   border-radius: 50%;
+  background: var(--bg);
   color: var(--text);
   transition: background-color 0.15s ease;
+}
+
+/* With the back button pinned, the toggle is the header's only in-flow item */
+.case-page .site-header {
+  justify-content: flex-end;
 }
 
 @media (hover: hover) {
@@ -376,13 +512,10 @@ a:hover {
 
 .placeholder {
   aspect-ratio: 16 / 10;
-  background: var(--hairline);
+  background: var(--jewel, var(--hairline));
 }
 
 .case-title {
-  font-size: var(--size-xl);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
   margin-bottom: var(--space-2);
 }
 
@@ -390,6 +523,11 @@ a:hover {
   font-size: var(--size-md);
   line-height: 1.5;
   margin-bottom: var(--space-3);
+}
+
+/* Each meta item stays whole when the line wraps */
+.case-meta span {
+  white-space: nowrap;
 }
 
 .case-meta {
@@ -404,7 +542,7 @@ a:hover {
 
 .case-points {
   margin: 0;
-  padding-left: 1.25em;
+  padding-left: var(--space-3);
   max-width: var(--measure);
 }
 
@@ -429,7 +567,7 @@ a:hover {
 .pager a {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--space-half);
   min-height: 44px;
   color: var(--text);
   text-decoration: none;
@@ -456,6 +594,7 @@ a:hover {
 }
 
 .pager-title {
+  font-weight: var(--weight-medium);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
@@ -472,7 +611,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-1) var(--space-3);
-  padding-block: var(--space-4) var(--space-5);
+  padding-block: var(--footer-top) var(--space-5);
 }
 
 .footer-local {
@@ -495,7 +634,7 @@ a:hover {
 /* Socials as short mono letters, like the deck's IG/ IN/ labels */
 .footer-links {
   display: flex;
-  margin: 0 -0.625rem 0 0; /* last letter meets the column edge */
+  margin: 0 calc(var(--space-1) * -1) 0 0; /* last letter meets the column edge */
   padding: 0;
   list-style: none;
 }
@@ -504,9 +643,10 @@ a:hover {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding-inline: 0.625rem;
+  padding-inline: var(--space-1);
   font-family: var(--font-mono);
   font-size: var(--size-xs);
+  font-weight: var(--weight-medium);
   letter-spacing: 0.08em;
   color: var(--text);
 }
@@ -514,7 +654,7 @@ a:hover {
 /* On phones the links wrap under the time line, so the first letter meets the left edge */
 @media (max-width: 480px) {
   .footer-links {
-    margin: 0 0 0 -0.625rem;
+    margin: 0 0 0 calc(var(--space-1) * -1);
   }
 }
 
@@ -532,4 +672,33 @@ img {
     transition: none !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Opening a case: the hero settles in, then the text rises into place in
+   reading order. Skipped entirely when reduced motion is on. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes case-hero-in {
+    from { opacity: 0; transform: scale(0.98); }
+  }
+
+  @keyframes case-rise {
+    from { opacity: 0; transform: translateY(12px); }
+  }
+
+  .case-page .hero {
+    animation: case-hero-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .case-page :is(.case-title, .case-summary, .case-meta, .case-points li, .pager) {
+    animation: case-rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) var(--rise-delay, 0s) both;
+  }
+
+  .case-title   { --rise-delay: 0.12s; }
+  .case-summary { --rise-delay: 0.18s; }
+  .case-meta    { --rise-delay: 0.24s; }
+  .case-points li:nth-child(1) { --rise-delay: 0.30s; }
+  .case-points li:nth-child(2) { --rise-delay: 0.35s; }
+  .case-points li:nth-child(3) { --rise-delay: 0.40s; }
+  .case-points li:nth-child(n + 4) { --rise-delay: 0.45s; }
+  .pager        { --rise-delay: 0.55s; }
 }
