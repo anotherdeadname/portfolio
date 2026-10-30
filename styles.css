@@ -16,7 +16,7 @@
   --weight-medium: 500;    /* names, row titles, labels */
   --weight-strong: 600;    /* bold proof points */
 
-  --column: 800px;
+  --column: calc(600px + 2 * var(--gutter)); /* 600px of content plus side padding */
   --gutter: clamp(16px, 5vw, 32px);
   --measure: 68ch;
 
@@ -415,10 +415,6 @@ a.row:focus-visible .thumb img {
 }
 
 /* Case study: one image, title, summary and resume-style bullets */
-.case-page {
-  --column: calc(700px + 2 * var(--gutter));
-}
-
 .back {
   display: inline-grid;
   place-items: center;
