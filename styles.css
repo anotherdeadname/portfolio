@@ -220,25 +220,48 @@ a:hover {
 .row-year { grid-area: year; }
 .row-arrow { grid-area: arrow; }
 
-/* On phones the year sits under the description so titles keep their width */
+/* On phones: one line each for title and description (truncated),
+   with the year sitting on the title line */
 @media (max-width: 480px) {
   .row {
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas:
-      "thumb text arrow"
-      "thumb year arrow";
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    grid-template-areas: "thumb text year arrow";
     align-items: start;
-    column-gap: 0.875rem;
-    row-gap: 0.25rem;
+    column-gap: 0.75rem;
   }
 
   .thumb {
-    width: 84px;
-    margin-top: 0.2rem;
+    width: 72px;
+  }
+
+  .row .row-heading {
+    flex-wrap: nowrap;
+    column-gap: 0.5rem;
+  }
+
+  .row-title,
+  .row-desc {
+    display: block;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .row .note {
+    flex: none;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.6875rem;
+  }
+
+  /* match the title's line box so the year sits on the same line */
+  .row-year {
+    font-size: 0.875rem;
+    line-height: calc(1.1875rem * 1.35);
   }
 
   .row-arrow {
-    margin-top: 0.3rem;
+    margin-top: 0.2rem;
   }
 }
 
@@ -511,8 +534,7 @@ a:hover {
 /* Socials as short mono letters, like the deck's IG/ IN/ labels */
 .footer-links {
   display: flex;
-  gap: var(--space-1);
-  margin: 0;
+  margin: 0 -0.625rem 0 0; /* last letter meets the column edge */
   padding: 0;
   list-style: none;
 }
@@ -520,28 +542,18 @@ a:hover {
 .footer-links a {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 44px;
   min-height: 44px;
+  padding-inline: 0.625rem;
   font-family: var(--font-mono);
   font-size: 0.875rem;
   letter-spacing: 0.08em;
   color: var(--text);
 }
 
-/* Line the outer letters up with the column edge */
-.footer-links li:last-child a {
-  justify-content: flex-end;
-}
-
-/* On phones the links wrap under the time line, so the first one meets the left edge */
+/* On phones the links wrap under the time line, so the first letter meets the left edge */
 @media (max-width: 480px) {
-  .footer-links li:first-child a {
-    justify-content: flex-start;
-  }
-
-  .footer-links li:last-child a {
-    justify-content: center;
+  .footer-links {
+    margin: 0 0 0 -0.625rem;
   }
 }
 
