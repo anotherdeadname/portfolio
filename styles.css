@@ -44,6 +44,15 @@
   --row-text-gap: var(--space-half);/* title to description */
   --footer-top:   var(--space-4);   /* last section to footer */
 
+  /* case page spacing, also tunable with ?tune */
+  --case-top:        var(--space-3);   /* header to hero image */
+  --case-hero-gap:   var(--space-4);   /* hero image to title */
+  --case-title-gap:  var(--space-2);   /* title to summary */
+  --case-summary-gap: var(--space-3);  /* summary to meta line */
+  --case-meta-gap:   var(--space-4);   /* meta line to bullets */
+  --case-bullet-gap: var(--space-2);   /* between bullets */
+  --case-pager-gap:  var(--space-5);   /* bullets to previous/next */
+
   /* thumbnails: 3:2 tiles */
   --thumb-w:      calc(var(--unit) * 12);  /* 96px */
 }
@@ -485,6 +494,10 @@ a.row:focus-visible .thumb img {
   justify-content: flex-end;
 }
 
+.case-page main {
+  padding-top: var(--case-top);
+}
+
 @media (hover: hover) {
   .back:hover {
     background: var(--hairline);
@@ -492,7 +505,7 @@ a.row:focus-visible .thumb img {
 }
 
 .media {
-  margin: 0 0 var(--space-4);
+  margin: 0 0 var(--case-hero-gap);
 }
 
 .frame {
@@ -516,13 +529,13 @@ a.row:focus-visible .thumb img {
 }
 
 .case-title {
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--case-title-gap);
 }
 
 .case-summary {
   font-size: var(--size-md);
   line-height: 1.5;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--case-summary-gap);
 }
 
 /* Each meta item stays whole when the line wraps */
@@ -537,7 +550,7 @@ a.row:focus-visible .thumb img {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--case-meta-gap);
 }
 
 .case-points {
@@ -547,7 +560,7 @@ a.row:focus-visible .thumb img {
 }
 
 .case-points li + li {
-  margin-top: var(--space-2);
+  margin-top: var(--case-bullet-gap);
 }
 
 .case-points li::marker {
@@ -559,7 +572,7 @@ a.row:focus-visible .thumb img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-2);
-  margin-top: var(--space-5);
+  margin-top: var(--case-pager-gap);
   padding-top: var(--space-3);
   border-top: 1px solid var(--hairline);
 }
