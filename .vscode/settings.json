@@ -1,0 +1,24 @@
+{
+  // Match the existing files: 2-space indents, no trailing spaces, final newline
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // Live Preview opens the home page; works from the Desktop folder too
+  "livePreview.defaultPreviewPath": "/index.html",
+
+  // Keep the branch list current so the status bar shows what's on GitHub
+  "git.autofetch": true,
+
+  // Hide the folders you never need to edit
+  "files.exclude": {
+    "References": true,
+    ".claude": true
+  },
+
+  "cSpell.words": [
+    "Axel", "McFarlane", "anotherdeadname", "anotherhaiku", "axelwashere",
+    "biscuitsanjam", "CookUnity", "FigJam", "haikus", "oklch", "Yerrr", "dialkit"
+  ]
+}
