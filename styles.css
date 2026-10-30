@@ -701,4 +701,13 @@ img {
   .case-points li:nth-child(3) { --rise-delay: 0.40s; }
   .case-points li:nth-child(n + 4) { --rise-delay: 0.45s; }
   .pager        { --rise-delay: 0.55s; }
+
+  /* Closing a case (see case.js): everything fades and sinks away together */
+  @keyframes case-leave {
+    to { opacity: 0; transform: translateY(8px); }
+  }
+
+  .case-page.is-leaving :is(.hero, .case-title, .case-summary, .case-meta, .case-points li, .pager) {
+    animation: case-leave 0.26s cubic-bezier(0.4, 0, 1, 1) both;
+  }
 }
