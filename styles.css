@@ -219,7 +219,11 @@ a:hover {
   line-height: 1.6;
   letter-spacing: normal;
   max-width: var(--measure);
-  margin-bottom: var(--space-2);
+  margin-bottom: 0;
+}
+
+.intro p {
+  margin-bottom: 0;
 }
 
 /* Home section labels are small and quiet, the rows carry the weight */
