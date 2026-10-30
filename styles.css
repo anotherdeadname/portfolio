@@ -116,12 +116,15 @@ a:hover {
   color: var(--accent-ink);
 }
 
-/* Portrait card that pops up from "Axel" in the intro on hover */
-.axel {
+/* Peeks: hovering a phrase in the intro pops up a small card.
+   "Axel" shows a portrait, "track record" shows a running gif.
+   Swap the files in assets/ to change them; a missing file shows a gray card. */
+.peek {
   position: relative;
+  white-space: nowrap;
 }
 
-.portrait {
+.peek-card {
   position: absolute;
   top: calc(100% + 0.5rem);
   left: 0;
@@ -130,19 +133,38 @@ a:hover {
   aspect-ratio: 5 / 8;
   border: 1px solid var(--border-strong);
   border-radius: 12px;
-  background: var(--hairline) url("assets/axel.jpg") center / cover no-repeat;
+  background: var(--hairline) center / cover no-repeat;
   box-shadow: 0 12px 32px oklch(0% 0 0 / 0.25);
   opacity: 0;
-  transform: translateY(-6px) rotate(-4deg) scale(0.96);
+  transform: translateY(-6px) rotate(var(--tilt)) scale(0.96);
   transform-origin: top left;
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+.peek-card--axel {
+  --tilt: -4deg;
+  background-image: url("assets/axel.jpg");
+}
+
+.peek-card--run {
+  --tilt: 3deg;
+  width: 220px;
+  aspect-ratio: 4 / 3;
+  background-image: url("assets/running.gif");
+}
+
 @media (hover: hover) {
-  .axel:hover .portrait {
+  .peek:hover .peek-card {
     opacity: 1;
-    transform: rotate(-4deg);
+    transform: rotate(var(--tilt));
+  }
+}
+
+/* An animated gif can't be paused, so skip it for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .peek-card--run {
+    display: none;
   }
 }
 
