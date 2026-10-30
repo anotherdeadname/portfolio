@@ -140,13 +140,28 @@ a:hover {
   padding-top: clamp(0rem, 4vw, var(--space-4));
 }
 
+/* The intro statement is set in the sans, like the about deck */
 .intro h1 {
-  margin-bottom: var(--space-3);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(2rem, 6.5vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
 }
 
-.intro p {
-  font-size: 1.25rem;
-  line-height: 1.55;
+.footnote p {
+  margin-bottom: 0;
+}
+
+.footnote ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footnote li::before {
+  content: "*" / "";
 }
 
 img {
