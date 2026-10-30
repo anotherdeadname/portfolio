@@ -199,13 +199,6 @@ a:hover {
   border-radius: 12px;
   color: var(--text);
   text-decoration: none;
-  transition: background-color 0.15s ease;
-}
-
-@media (hover: hover) {
-  .row:hover {
-    background: var(--hairline);
-  }
 }
 
 /* Gray box is the placeholder until an <img> goes inside */
@@ -252,18 +245,28 @@ a:hover {
   flex: 1;
 }
 
-/* The arrow marks each row as a link; the title underlines on hover and focus */
+/* The arrow marks each row as a link, so titles have no underline */
 .row-title {
   font-size: 1.1875rem;
   line-height: 1.35;
-  text-decoration: none;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
 }
 
-.row:hover .row-title,
-.row:focus-visible .row-title {
-  text-decoration-line: underline;
+/* Hovering a row softly blurs everything else on the page (mouse only) */
+.site-header,
+.intro,
+.work h2,
+.side-projects h2,
+.row,
+.site-footer {
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+
+@media (hover: hover) {
+  body:has(.row:hover) :is(.site-header, .intro, .work h2, .side-projects h2, .site-footer),
+  body:has(.row:hover) .row:not(:hover) {
+    filter: blur(3px);
+    opacity: 0.5;
+  }
 }
 
 .row-desc {
