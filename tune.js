@@ -59,5 +59,33 @@
       root.style.setProperty("--row-col-gap", px(v.rows.thumbToText));
       root.style.setProperty("--row-text-gap", px(v.rows.titleToDesc));
     });
+
+    // Case pages get a second panel for the space above and inside a case
+    if (document.body.classList.contains("case-page")) {
+      var caseKit = window.DialKit.createDialKit(
+        "Case spacing",
+        {
+          caseTop: [24, 0, 160, 4],
+          heroToTitle: [40, 8, 120, 4],
+          titleToSummary: [16, 0, 48, 2],
+          summaryToMeta: [24, 0, 64, 4],
+          metaToBullets: [40, 8, 96, 4],
+          betweenBullets: [16, 0, 40, 2],
+          bulletsToPager: [64, 16, 160, 8],
+        },
+        { id: "portfolio-case-spacing", persist: true }
+      );
+
+      caseKit.subscribe(function (v) {
+        var px = function (n) { return n + "px"; };
+        root.style.setProperty("--case-top", px(v.caseTop));
+        root.style.setProperty("--case-hero-gap", px(v.heroToTitle));
+        root.style.setProperty("--case-title-gap", px(v.titleToSummary));
+        root.style.setProperty("--case-summary-gap", px(v.summaryToMeta));
+        root.style.setProperty("--case-meta-gap", px(v.metaToBullets));
+        root.style.setProperty("--case-bullet-gap", px(v.betweenBullets));
+        root.style.setProperty("--case-pager-gap", px(v.bulletsToPager));
+      });
+    }
   }
 })();
