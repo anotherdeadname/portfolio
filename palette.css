@@ -1,27 +1,32 @@
+/* Monochrome, matched to the portfolio deck. Contrast is against --bg. */
+
 :root {
   /* surfaces + text */
-  --bg:          oklch(99.5% 0.022 107);  /* butter cream */
-  --text:        oklch(23.1% 0.004 85);   /* warm charcoal */
-  --text-muted:  oklch(46.5% 0.085 343);  /* plum */
+  --bg:          oklch(100% 0 0);          /* white */
+  --text:        oklch(20% 0.015 280);     /* blue-black ink, 18.1:1 */
+  --text-muted:  oklch(45% 0.008 280);     /* cool gray, 7.4:1 */
 
-  /* accent (green) */
-  --accent:      oklch(67.6% 0.110 142);  /* sage: fills, backgrounds, large shapes */
-  --accent-ink:  oklch(44.5% 0.107 145);  /* deeper green: links, small text */
-  --on-accent:   oklch(14% 0.004 85);     /* near-black text on green fills */
+  /* accent: kept monochrome for now */
+  --accent:      oklch(20% 0.015 280);     /* ink: fills, large shapes */
+  --accent-ink:  oklch(20% 0.015 280);     /* links (always underlined) */
+  --on-accent:   oklch(100% 0 0);          /* white text on ink fills */
 
   /* lines */
-  --hairline:      oklch(90% 0.02 100);   /* dividers, rules (decorative) */
-  --border-strong: oklch(60% 0.02 95);    /* media frames, 3:1+ */
+  --hairline:      oklch(92% 0.004 280);   /* dividers, rules (decorative) */
+  --border-strong: oklch(64% 0.008 280);   /* media frames, 3:1+ */
 }
 
 :root[data-theme="dark"] {
-  --bg:          oklch(23.1% 0.004 85);
-  --text:        oklch(99.5% 0.022 107);
-  --text-muted:  oklch(74% 0.06 343);     /* lightened plum */
-  --accent-ink:  oklch(72.5% 0.110 142);  /* lightened sage for links on dark */
+  --bg:          oklch(20% 0.015 280);     /* deck's dark slide */
+  --text:        oklch(97% 0.003 280);     /* 16.6:1 */
+  --text-muted:  oklch(72% 0.008 280);     /* 7.2:1 */
 
-  --hairline:      oklch(33% 0.006 85);
-  --border-strong: oklch(55% 0.01 90);
+  --accent:      oklch(97% 0.003 280);
+  --accent-ink:  oklch(97% 0.003 280);
+  --on-accent:   oklch(20% 0.015 280);
+
+  --hairline:      oklch(30% 0.012 280);
+  --border-strong: oklch(52% 0.008 280);
 }
 
 :focus-visible {
