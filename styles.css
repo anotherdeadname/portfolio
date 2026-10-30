@@ -116,6 +116,36 @@ a:hover {
   color: var(--accent-ink);
 }
 
+/* Portrait card that pops up from "Axel" in the intro on hover */
+.axel {
+  position: relative;
+}
+
+.portrait {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 10;
+  width: 168px;
+  aspect-ratio: 5 / 8;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--hairline) url("assets/axel.jpg") center / cover no-repeat;
+  box-shadow: 0 12px 32px oklch(0% 0 0 / 0.25);
+  opacity: 0;
+  transform: translateY(-6px) rotate(-4deg) scale(0.96);
+  transform-origin: top left;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (hover: hover) {
+  .axel:hover .portrait {
+    opacity: 1;
+    transform: rotate(-4deg);
+  }
+}
+
 .theme-toggle {
   display: inline-grid;
   place-items: center;
