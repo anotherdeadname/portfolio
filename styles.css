@@ -257,8 +257,7 @@ a:hover {
   line-height: 1.35;
 }
 
-/* Progressive blur: hovering a row blurs the page more the further away it is.
-   Neighbouring rows stay nearly readable; the rest of the page blurs the most. */
+/* Hovering a row blurs everything else on the page by the same amount */
 .site-header,
 .intro,
 .work h2,
@@ -270,23 +269,10 @@ a:hover {
 }
 
 @media (hover: hover) {
-  /* furthest: everything outside the lists */
-  body:has(a.row:hover) :is(.site-header, .intro, .work h2, .side-projects h2, .ai-tools h2, .site-footer) {
-    filter: blur(4px);
-    opacity: 0.4;
-  }
-
-  /* other rows */
+  body:has(a.row:hover) :is(.site-header, .intro, .work h2, .side-projects h2, .ai-tools h2, .site-footer),
   body:has(a.row:hover) .row:not(:hover) {
-    filter: blur(2.5px);
+    filter: blur(3px);
     opacity: 0.5;
-  }
-
-  /* rows right next to the hovered one */
-  .rows li:has(a.row:hover) + li .row,
-  .rows li:has(+ li a.row:hover) .row {
-    filter: blur(1px);
-    opacity: 0.7;
   }
 }
 
