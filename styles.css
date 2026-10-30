@@ -511,6 +511,15 @@ a.row:focus-visible .thumb img {
   padding-top: var(--back-top);   /* hero top lines up with the back button */
 }
 
+/* Below 784px there's no room beside the 600px column for the button
+   (44px + 24px gap + 24px edge), so it sits above the case instead and the
+   case starts 24px below it. It stays pinned while scrolling. */
+@media (max-width: 783px) {
+  .case-page main {
+    padding-top: calc(var(--back-top) + 44px + var(--space-3));
+  }
+}
+
 @media (hover: hover) {
   .back:hover {
     background: var(--hairline);
