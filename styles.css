@@ -738,11 +738,11 @@ img {
   }
 }
 
-/* Edge blur: content softens as it passes under the top and bottom of the
-   window. The bottom band is always on; the top band fades in once the page
-   has scrolled (edges.js sets .is-scrolled on <html>). */
-body::before,
-body::after {
+/* Edge blur on case and project pages: content softens as it passes under
+   the top and bottom of the window. The bottom band is always on; the top
+   band fades in once the page has scrolled (edges.js sets .is-scrolled). */
+.case-page::before,
+.case-page::after {
   content: "";
   position: fixed;
   left: 0;
@@ -754,7 +754,7 @@ body::after {
   backdrop-filter: blur(var(--edge-blur, 6px));
 }
 
-body::before {
+.case-page::before {
   top: 0;
   -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent);
   mask-image: linear-gradient(to bottom, #000 30%, transparent);
@@ -762,11 +762,11 @@ body::before {
   transition: opacity 0.25s ease;
 }
 
-html.is-scrolled body::before {
+html.is-scrolled .case-page::before {
   opacity: 1;
 }
 
-body::after {
+.case-page::after {
   bottom: 0;
   -webkit-mask-image: linear-gradient(to top, #000 30%, transparent);
   mask-image: linear-gradient(to top, #000 30%, transparent);
