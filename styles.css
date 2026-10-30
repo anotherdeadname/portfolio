@@ -45,8 +45,7 @@
   --footer-top:   var(--space-4);   /* last section to footer */
 
   /* case page spacing, also tunable with ?tune */
-  --back-top:        var(--space-4);   /* top of the window to the back button */
-  --case-top:        var(--space-3);   /* header to hero image */
+  --back-top:        var(--space-4);   /* top of the window to the back button and hero image */
   --case-hero-gap:   var(--space-4);   /* hero image to title */
   --case-title-gap:  var(--space-2);   /* title to summary */
   --case-summary-gap: var(--space-3);  /* summary to meta line */
@@ -504,13 +503,13 @@ a.row:focus-visible .thumb img {
 }
 
 /* Case pages have no theme toggle and the back button is pinned, so the
-   header is empty; it keeps its height so the hero doesn't move up */
+   header is empty and takes no space */
 .case-page .site-header {
-  height: calc(44px + 2 * var(--header-pad));
+  padding-block: 0;
 }
 
 .case-page main {
-  padding-top: var(--case-top);
+  padding-top: var(--back-top);   /* hero top lines up with the back button */
 }
 
 @media (hover: hover) {
