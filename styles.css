@@ -508,34 +508,40 @@ a:hover {
   content: " · " / "";
 }
 
-/* Social icons: 18px marks inside 44px tap targets */
+/* Socials as short mono letters, like the deck's IG/ IN/ labels */
 .footer-links {
   display: flex;
-  gap: 0.25rem;
-  margin: 0 -13px 0 0; /* optically align the last icon with the column edge */
+  gap: var(--space-1);
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .footer-links a {
-  display: inline-grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  color: var(--text-muted);
-  transition: color 0.15s ease, background-color 0.15s ease;
-}
-
-.footer-links a:hover {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
   color: var(--text);
-  background: var(--hairline);
 }
 
-/* On phones the icons wrap under the time line, so align the first one left */
+/* Line the outer letters up with the column edge */
+.footer-links li:last-child a {
+  justify-content: flex-end;
+}
+
+/* On phones the links wrap under the time line, so the first one meets the left edge */
 @media (max-width: 480px) {
-  .footer-links {
-    margin: 0 0 0 -13px;
+  .footer-links li:first-child a {
+    justify-content: flex-start;
+  }
+
+  .footer-links li:last-child a {
+    justify-content: center;
   }
 }
 
