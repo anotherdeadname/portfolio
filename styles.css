@@ -401,6 +401,26 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 
+/* Footer: one friendly line, then the deck's label row */
+.site-footer {
+  padding-block: var(--space-4) var(--space-5);
+}
+
+.footer-line {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.footer-label {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+}
+
 img {
   max-width: 100%;
   height: auto;
