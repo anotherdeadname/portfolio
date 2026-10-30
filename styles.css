@@ -43,9 +43,8 @@
   --row-text-gap: var(--space-half);/* title to description */
   --footer-top:   var(--space-4);   /* last section to footer */
 
-  /* thumbnails: 3:2 tiles for work, squares for side projects and AI tools */
+  /* thumbnails: 3:2 tiles */
   --thumb-w:      calc(var(--unit) * 12);  /* 96px */
-  --thumb-square: calc(var(--unit) * 8);   /* 64px */
 }
 
 @media (min-width: 600px) {
@@ -57,7 +56,6 @@
 @media (max-width: 480px) {
   :root {
     --thumb-w: calc(var(--unit) * 9);      /* 72px */
-    --thumb-square: calc(var(--unit) * 6); /* 48px */
   }
 }
 
@@ -279,9 +277,7 @@ a:hover {
 /* Grid keeps the year and arrow vertically centred on the row */
 .row {
   display: grid;
-  /* the thumb column is always the work-tile width, so titles line up
-     across sections even where the tile is a smaller square */
-  grid-template-columns: var(--thumb-w) 1fr auto auto;
+  grid-template-columns: var(--thumb-w) minmax(0, 1fr) auto auto;
   grid-template-areas: "thumb text year arrow";
   align-items: center;
   column-gap: var(--row-col-gap);
@@ -301,12 +297,6 @@ a:hover {
   background: var(--hairline);
   border: 1px solid var(--border-strong);
   overflow: hidden;
-}
-
-.side-projects .thumb,
-.ai-tools .thumb {
-  width: var(--thumb-square);
-  aspect-ratio: 1;
 }
 
 .thumb { grid-area: thumb; }
@@ -330,8 +320,7 @@ a:hover {
     column-gap: var(--space-1);
   }
 
-  .row-title,
-  .row-desc {
+  .row-title {
     display: block;
     min-width: 0;
     white-space: nowrap;
@@ -428,7 +417,13 @@ a.row:focus-visible .thumb img {
   }
 }
 
+/* Descriptions always stay on one line; longer text ends in "…" */
 .row-desc {
+  display: block;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: var(--size-sm);
   line-height: 1.45;
   color: var(--text-muted);
