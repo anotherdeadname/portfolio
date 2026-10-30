@@ -1,0 +1,18 @@
+:root {
+  /* surfaces + text */
+  --bg:          oklch(99.5% 0.022 107);  /* butter cream */
+  --text:        oklch(23.1% 0.004 85);   /* warm charcoal */
+  --text-muted:  oklch(46.5% 0.085 343);  /* plum */
+
+  /* accent (green) */
+  --accent:      oklch(67.6% 0.110 142);  /* sage: fills, backgrounds, large shapes */
+  --accent-ink:  oklch(47.3% 0.107 145);  /* deeper green: links, small text */
+  --on-accent:   oklch(23.1% 0.004 85);   /* charcoal text on green fills */
+}
+
+:root[data-theme="dark"] {
+  --bg:          oklch(23.1% 0.004 85);
+  --text:        oklch(99.5% 0.022 107);
+  --text-muted:  oklch(72% 0.06 343);     /* lightened plum */
+  --accent-ink:  oklch(67.6% 0.110 142);  /* sage works as link color on dark */
+}
