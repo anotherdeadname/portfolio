@@ -673,3 +673,32 @@ img {
     scroll-behavior: auto !important;
   }
 }
+
+/* Opening a case: the hero settles in, then the text rises into place in
+   reading order. Skipped entirely when reduced motion is on. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes case-hero-in {
+    from { opacity: 0; transform: scale(0.98); }
+  }
+
+  @keyframes case-rise {
+    from { opacity: 0; transform: translateY(12px); }
+  }
+
+  .case-page .hero {
+    animation: case-hero-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .case-page :is(.case-title, .case-summary, .case-meta, .case-points li, .pager) {
+    animation: case-rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) var(--rise-delay, 0s) both;
+  }
+
+  .case-title   { --rise-delay: 0.12s; }
+  .case-summary { --rise-delay: 0.18s; }
+  .case-meta    { --rise-delay: 0.24s; }
+  .case-points li:nth-child(1) { --rise-delay: 0.30s; }
+  .case-points li:nth-child(2) { --rise-delay: 0.35s; }
+  .case-points li:nth-child(3) { --rise-delay: 0.40s; }
+  .case-points li:nth-child(n + 4) { --rise-delay: 0.45s; }
+  .pager        { --rise-delay: 0.55s; }
+}
