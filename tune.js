@@ -38,7 +38,6 @@
         },
         rows: {
           workThumb: [96, 48, 160, 8],
-          squareThumb: [64, 32, 128, 8],
           rowPad: [8, 0, 32, 2],
           thumbToText: [16, 4, 48, 2],
           titleToDesc: [4, 0, 16, 1],
@@ -56,7 +55,6 @@
       root.style.setProperty("--label-gap", px(v.page.labelGap));
       root.style.setProperty("--footer-top", px(v.page.footerTop));
       root.style.setProperty("--thumb-w", px(v.rows.workThumb));
-      root.style.setProperty("--thumb-square", px(v.rows.squareThumb));
       root.style.setProperty("--row-pad", px(v.rows.rowPad));
       root.style.setProperty("--row-col-gap", px(v.rows.thumbToText));
       root.style.setProperty("--row-text-gap", px(v.rows.titleToDesc));
