@@ -148,12 +148,24 @@ a:hover {
 }
 
 /* Home section labels are small and quiet, the rows carry the weight */
+/* Section labels read like files: .work 03 */
 .work h2,
 .side-projects h2,
 .ai-tools h2 {
-  font-size: var(--size-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  letter-spacing: 0.04em;
   color: var(--text-muted);
   margin-bottom: var(--space-1);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.count {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Work and side project rows */
@@ -290,8 +302,22 @@ a:hover {
 }
 
 /* Thumbnail tilts gently on hover */
+/* The maximal side, kept private: each thumbnail floods with a jewel
+   tone only while hovered. Decorative fills, never behind text. */
+.rows li:nth-child(4n + 1) .thumb { --jewel: var(--jewel-magenta); }
+.rows li:nth-child(4n + 2) .thumb { --jewel: var(--jewel-cobalt); }
+.rows li:nth-child(4n + 3) .thumb { --jewel: var(--jewel-chartreuse); }
+.rows li:nth-child(4n + 4) .thumb { --jewel: var(--jewel-tangerine); }
+
 .thumb {
-  transition: transform 0.35s ease;
+  transition: transform 0.35s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+@media (hover: hover) {
+  a.row:hover .thumb {
+    background: var(--jewel);
+    border-color: var(--jewel);
+  }
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
