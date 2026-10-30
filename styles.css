@@ -118,7 +118,7 @@ a:hover {
 
 /* Peeks: hovering a phrase in the intro pops up a small card.
    "Axel" shows a portrait, "track record" shows a running gif.
-   Swap the files in assets/ to change them; a missing file shows a gray card. */
+   Swap the image URLs below to change them; a missing image shows a gray card. */
 .peek {
   position: relative;
   white-space: nowrap;
@@ -147,11 +147,12 @@ a:hover {
   background-image: url("assets/axel.jpg");
 }
 
+/* Usain Bolt finishing the race, hotlinked from Tenor (tenor.com/view/...-22595436) */
 .peek-card--run {
   --tilt: 3deg;
-  width: 220px;
-  aspect-ratio: 4 / 3;
-  background-image: url("assets/running.gif");
+  width: 200px;
+  aspect-ratio: 1;
+  background-image: url("https://media.tenor.com/UhEYaXfAKXYAAAAM/running-usain-bolt.gif");
 }
 
 @media (hover: hover) {
