@@ -737,3 +737,37 @@ img {
     animation: case-leave 0.26s cubic-bezier(0.4, 0, 1, 1) both;
   }
 }
+
+/* Edge blur: content softens as it passes under the top and bottom of the
+   window. The bottom band is always on; the top band fades in once the page
+   has scrolled (edges.js sets .is-scrolled on <html>). */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  height: var(--edge-blur-h, calc(var(--unit) * 8));
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(var(--edge-blur, 6px));
+  backdrop-filter: blur(var(--edge-blur, 6px));
+}
+
+body::before {
+  top: 0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent);
+  mask-image: linear-gradient(to bottom, #000 30%, transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+html.is-scrolled body::before {
+  opacity: 1;
+}
+
+body::after {
+  bottom: 0;
+  -webkit-mask-image: linear-gradient(to top, #000 30%, transparent);
+  mask-image: linear-gradient(to top, #000 30%, transparent);
+}
