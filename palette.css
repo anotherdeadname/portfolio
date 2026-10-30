@@ -15,6 +15,12 @@
   --hairline:      oklch(92% 0.004 280);   /* dividers, rules (decorative) */
   --border-strong: oklch(64% 0.008 280);   /* media frames, 3:1+ */
 
+  /* jewel tones: decorative hover fills only, never text */
+  --jewel-magenta:    oklch(62% 0.25 350);
+  --jewel-cobalt:     oklch(52% 0.22 265);
+  --jewel-chartreuse: oklch(88% 0.20 122);
+  --jewel-tangerine:  oklch(72% 0.19 50);
+
   color-scheme: light;
 }
 
