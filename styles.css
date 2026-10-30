@@ -1,5 +1,22 @@
 /* Layout and type. Colors come only from palette.css tokens. */
 
+:root {
+  --font-sans: "Inclusive Sans", system-ui, sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+
+  --column: 800px;
+  --gutter: clamp(16px, 5vw, 32px);
+  --measure: 68ch;
+
+  /* spacing scale */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+}
+
 *,
 *::before,
 *::after {
@@ -8,5 +25,83 @@
 
 body {
   margin: 0;
+  background: var(--bg);
   color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Single centered column */
+.site-header,
+main,
+.site-footer {
+  max-width: var(--column);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+main {
+  padding-block: var(--space-4) var(--space-5);
+}
+
+section + section {
+  margin-top: var(--space-5);
+}
+
+/* Type */
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 var(--space-2);
+  font-variation-settings: "SOFT" 50;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 6vw, 3.25rem);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 var(--space-2);
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--accent-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
