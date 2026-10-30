@@ -255,6 +255,121 @@ a:hover {
   padding-right: 7.5rem;
 }
 
+/* Case study: long-form text column */
+.case-page {
+  --column: calc(700px + 2 * var(--gutter));
+}
+
+.case-header {
+  margin-bottom: var(--space-4);
+}
+
+.case-title {
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-3);
+}
+
+.case-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.case-intro p {
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+
+.case section {
+  margin-top: var(--space-5);
+}
+
+.case h2 {
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: var(--space-3);
+}
+
+.case ul {
+  padding-left: 1.25em;
+  margin: 0 0 var(--space-2);
+}
+
+.case li + li {
+  margin-top: 0.25rem;
+}
+
+/* Media blocks: image, video or embed in a rounded frame */
+.media {
+  margin: var(--space-4) 0;
+}
+
+.frame {
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--hairline);
+}
+
+.frame > img,
+.frame > video,
+.frame > iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+.frame > iframe {
+  aspect-ratio: 16 / 10;
+  height: auto;
+}
+
+.placeholder {
+  aspect-ratio: 16 / 10;
+  background: var(--hairline);
+}
+
+.placeholder-wide {
+  aspect-ratio: 16 / 9;
+}
+
+.media figcaption {
+  margin-top: var(--space-1);
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Optional headline numbers, like the deck's impact row */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-4) 0 0;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--space-1);
+}
+
+.stats dd {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stats dt {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
 img {
   max-width: 100%;
   height: auto;
