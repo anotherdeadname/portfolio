@@ -45,6 +45,7 @@
   --footer-top:   var(--space-4);   /* last section to footer */
 
   /* case page spacing, also tunable with ?tune */
+  --back-top:        var(--space-4);   /* top of the window to the back button */
   --case-top:        var(--space-3);   /* header to hero image */
   --case-hero-gap:   var(--space-4);   /* hero image to title */
   --case-title-gap:  var(--space-2);   /* title to summary */
@@ -473,7 +474,7 @@ a.row:focus-visible .thumb img {
    A solid fill keeps it readable if content ever passes underneath. */
 .back {
   position: fixed;
-  top: var(--header-pad);
+  top: var(--back-top);
   /* sits in the left margin, 24px outside the content column;
      on narrow screens with no margin it falls back to the 16px edge */
   left: max(var(--space-2), calc((100% - var(--column)) / 2 + var(--gutter) - 44px - var(--space-3)));
@@ -484,14 +485,15 @@ a.row:focus-visible .thumb img {
   height: 44px;
   border: 1px solid var(--border-strong);
   border-radius: 50%;
-  background: var(--bg);
+  background: var(--surface);
   color: var(--text);
   transition: background-color 0.15s ease;
 }
 
-/* With the back button pinned, the toggle is the header's only in-flow item */
+/* Case pages have no theme toggle and the back button is pinned, so the
+   header is empty; it keeps its height so the hero doesn't move up */
 .case-page .site-header {
-  justify-content: flex-end;
+  height: calc(44px + 2 * var(--header-pad));
 }
 
 .case-page main {

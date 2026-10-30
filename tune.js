@@ -65,6 +65,7 @@
       var caseKit = window.DialKit.createDialKit(
         "Case spacing",
         {
+          backTop: [40, 0, 120, 4],
           caseTop: [24, 0, 160, 4],
           heroToTitle: [40, 8, 120, 4],
           titleToSummary: [16, 0, 48, 2],
@@ -78,6 +79,7 @@
 
       caseKit.subscribe(function (v) {
         var px = function (n) { return n + "px"; };
+        root.style.setProperty("--back-top", px(v.backTop));
         root.style.setProperty("--case-top", px(v.caseTop));
         root.style.setProperty("--case-hero-gap", px(v.heroToTitle));
         root.style.setProperty("--case-title-gap", px(v.titleToSummary));

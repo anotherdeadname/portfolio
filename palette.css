@@ -14,6 +14,7 @@
   /* lines */
   --hairline:      oklch(92% 0.004 280);   /* dividers, rules (decorative) */
   --border-strong: oklch(64% 0.008 280);   /* media frames, 3:1+ */
+  --surface:       oklch(97% 0.004 280);   /* raised controls, one shade off the page */
 
   /* jewel tones: decorative hover fills only, never text.
      One lightness and chroma, only the hue changes, so the set reads as
@@ -42,6 +43,7 @@
 
     --hairline:      oklch(30% 0.012 280);
     --border-strong: oklch(52% 0.008 280);
+    --surface:       oklch(25% 0.015 280);
 
     color-scheme: dark;
   }
@@ -58,6 +60,7 @@
 
   --hairline:      oklch(30% 0.012 280);
   --border-strong: oklch(52% 0.008 280);
+  --surface:       oklch(25% 0.015 280);
 
   color-scheme: dark;
 }
