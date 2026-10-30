@@ -1,0 +1,7 @@
+{
+  // VS Code offers to install these when the folder is opened.
+  "recommendations": [
+    "ms-vscode.live-server",                  // Live Preview: see the site update as you save
+    "streetsidesoftware.code-spell-checker"   // catches typos in copy
+  ]
+}
