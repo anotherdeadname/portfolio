@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Project title · Axel McFarlane</title>
-  <meta name="description" content="One-sentence summary of the project.">
+  <meta name="description" content="One-line summary of the project.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Inclusive+Sans:ital@0;1&display=swap">
@@ -14,7 +14,11 @@
 </head>
 <body class="case-page">
   <header class="site-header">
-    <a class="mark" href="../index.html" aria-label="Axel McFarlane, home">AmC</a>
+    <a class="back" href="../index.html#work-heading" aria-label="Back to work">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+        <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
     <button class="theme-toggle" type="button" aria-label="Switch to dark theme">
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
         <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
@@ -25,129 +29,40 @@
 
   <main class="case">
     <article>
-      <header class="case-header">
-        <h1 class="case-title">Project title, one short line</h1>
-        <p class="case-meta">
-          <span>Company</span> · <span>Staff product designer</span> ·
-          <span>2026</span> · <span>Figma, FigJam</span>
-        </p>
-      </header>
+      <figure class="media hero">
+        <div class="frame">
+          <!-- Replace with: <img src="../assets/project/hero.png" alt="Describe what the screen shows"> -->
+          <div class="placeholder" role="img" aria-label="Placeholder project image"></div>
+        </div>
+      </figure>
 
-      <!-- Intro: the summary. Problem, role, outcome. No heading. -->
-      <div class="case-intro">
-        <p>
-          The problem in one or two sentences: who was struggling, with what,
-          and why it mattered to the business.
-        </p>
-        <p>
-          My role: what I owned, who I worked with, and how long it ran.
-        </p>
-        <p>
-          The outcome: what shipped and the one number or change that shows it
-          worked.
-        </p>
-      </div>
+      <h1 class="case-title">Project title, one short line</h1>
+      <p class="case-summary">
+        One-line summary: what changed, and for whom.
+      </p>
+      <p class="case-meta">
+        Company · Staff product designer · 2026 · Figma, FigJam
+      </p>
 
-      <section aria-labelledby="problem">
-        <h2 id="problem">The problem</h2>
-        <p>
-          Placeholder paragraph. Describe the situation before the work started,
-          what was broken or missing, and what signals told the team it was worth
-          fixing.
-        </p>
-
-        <figure class="media">
-          <div class="frame">
-            <!-- Replace with: <img src="../assets/project/problem.png" alt="Describe what the image shows"> -->
-            <div class="placeholder" role="img" aria-label="Placeholder image"></div>
-          </div>
-          <figcaption>Optional caption that says what to notice.</figcaption>
-        </figure>
-
-        <p>
-          A second short paragraph that follows the image and keeps the story
-          moving.
-        </p>
-      </section>
-
-      <section aria-labelledby="role">
-        <h2 id="role">My role and scope</h2>
-        <p>
-          Placeholder paragraph. What you owned, the size of the team, your
-          partners in product, engineering and research, and the timeline.
-        </p>
-      </section>
-
-      <section aria-labelledby="approach">
-        <h2 id="approach">Approach</h2>
-        <p>
-          Placeholder paragraph about how you worked through it.
-        </p>
-        <ul>
-          <li>First thing you did</li>
-          <li>Second thing you did</li>
-          <li>Third thing you did</li>
-        </ul>
-
-        <figure class="media">
-          <div class="frame">
-            <!-- Replace with:
-              <video src="../assets/project/flow.mp4" controls muted playsinline
-                     aria-label="Describe what the video shows"></video> -->
-            <div class="placeholder placeholder-wide" role="img" aria-label="Placeholder video"></div>
-          </div>
-          <figcaption>Short video placeholder.</figcaption>
-        </figure>
-      </section>
-
-      <section aria-labelledby="solution">
-        <h2 id="solution">The solution</h2>
-        <p>
-          Placeholder paragraph describing what shipped and the key decisions
-          behind it.
-        </p>
-
-        <figure class="media">
-          <div class="frame">
-            <!-- Replace with:
-              <iframe src="https://embed.figma.com/..." title="Describe the prototype"
-                      loading="lazy" allowfullscreen></iframe> -->
-            <div class="placeholder" role="img" aria-label="Placeholder interactive embed"></div>
-          </div>
-          <figcaption>Interactive embed placeholder, for example a Figma prototype.</figcaption>
-        </figure>
-      </section>
-
-      <section aria-labelledby="impact">
-        <h2 id="impact">Impact</h2>
-        <p>
-          Placeholder paragraph about what changed for users and the business.
-        </p>
-        <!-- Optional: up to three headline numbers -->
-        <dl class="stats">
-          <div>
-            <dt>Metric one</dt>
-            <dd>+00%</dd>
-          </div>
-          <div>
-            <dt>Metric two</dt>
-            <dd>−00%</dd>
-          </div>
-          <div>
-            <dt>Metric three</dt>
-            <dd>+00%</dd>
-          </div>
-        </dl>
-      </section>
-
-      <section aria-labelledby="differently">
-        <h2 id="differently">What I would do differently</h2>
-        <p>
-          Placeholder paragraph. One or two honest lessons and what you would try
-          next time.
-        </p>
-      </section>
+      <!-- Resume-style bullets: lead with the verb, bold the proof -->
+      <ul class="case-points">
+        <li>Led <strong>the redesign of something</strong> in <strong>five months</strong>, from direction to launch.</li>
+        <li>Aligned <strong>20-plus stakeholders</strong> by turning a prototype into the shared plan.</li>
+        <li>Shipped <strong>a new experience</strong> that moved <strong>a key metric by 00%</strong>.</li>
+        <li>Built <strong>a source of truth</strong> the team still uses to plan and measure.</li>
+      </ul>
     </article>
+
+    <nav class="pager" aria-label="More work">
+      <a class="pager-prev" href="#">
+        <span class="pager-label">Previous</span>
+        <span class="pager-title">Previous project title</span>
+      </a>
+      <a class="pager-next" href="#">
+        <span class="pager-label">Next</span>
+        <span class="pager-title">Next project title</span>
+      </a>
+    </nav>
   </main>
 
   <footer class="site-footer">
