@@ -179,12 +179,10 @@ a:hover {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--hairline);
 }
 
 .rows li {
   position: relative;
-  border-bottom: 1px solid var(--hairline);
 }
 
 .row {
