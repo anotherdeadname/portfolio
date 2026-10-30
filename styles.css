@@ -481,24 +481,46 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 
-/* Footer: one friendly line, then the deck's label row */
+/* Footer: Brooklyn time and weather on the left, links on the right */
 .site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
   padding-block: var(--space-4) var(--space-5);
 }
 
-.footer-line {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  margin-bottom: var(--space-4);
-}
-
-.footer-label {
+.footer-local {
+  margin: 0;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+.footer-local span {
+  white-space: nowrap;
+}
+
+.footer-local span + span::before {
+  content: " · " / "";
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-3);
   margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text);
 }
 
 img {
