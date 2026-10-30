@@ -460,15 +460,28 @@ a.row:focus-visible .thumb img {
 }
 
 /* Case study: one image, title, summary and resume-style bullets */
+/* The back button stays pinned top-left of the column while the case scrolls.
+   It keeps its spot in the header, so nothing jumps; a solid fill keeps it
+   readable over the content passing underneath. */
 .back {
+  position: fixed;
+  top: var(--header-pad);
+  left: max(var(--gutter), calc((100% - var(--column)) / 2 + var(--gutter)));
+  z-index: 20;
   display: inline-grid;
   place-items: center;
   width: 44px;
   height: 44px;
   border: 1px solid var(--border-strong);
   border-radius: 50%;
+  background: var(--bg);
   color: var(--text);
   transition: background-color 0.15s ease;
+}
+
+/* With the back button pinned, the toggle is the header's only in-flow item */
+.case-page .site-header {
+  justify-content: flex-end;
 }
 
 @media (hover: hover) {
