@@ -212,7 +212,13 @@ a:hover {
 }
 
 /* Kept compact so the work list shows on the first screen */
+/* The intro statement reads as body text, not a display headline */
 .intro h1 {
+  font-size: var(--size-md);
+  font-weight: var(--weight-regular);
+  line-height: 1.6;
+  letter-spacing: normal;
+  max-width: var(--measure);
   margin-bottom: var(--space-2);
 }
 
