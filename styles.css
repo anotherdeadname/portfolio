@@ -255,58 +255,30 @@ a:hover {
   padding-right: 7.5rem;
 }
 
-/* Case study: long-form text column */
+/* Case study: one image, title, summary and resume-style bullets */
 .case-page {
   --column: calc(700px + 2 * var(--gutter));
 }
 
-.case-header {
-  margin-bottom: var(--space-4);
+.back {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  color: var(--text);
+  transition: background-color 0.15s ease;
 }
 
-.case-title {
-  font-size: clamp(2.5rem, 7vw, 4rem);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-3);
+@media (hover: hover) {
+  .back:hover {
+    background: var(--hairline);
+  }
 }
 
-.case-meta {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  line-height: 1.6;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.case-intro p {
-  font-size: 1.25rem;
-  line-height: 1.55;
-}
-
-.case section {
-  margin-top: var(--space-5);
-}
-
-.case h2 {
-  padding-bottom: var(--space-1);
-  border-bottom: 1px solid var(--hairline);
-  margin-bottom: var(--space-3);
-}
-
-.case ul {
-  padding-left: 1.25em;
-  margin: 0 0 var(--space-2);
-}
-
-.case li + li {
-  margin-top: 0.25rem;
-}
-
-/* Media blocks: image, video or embed in a rounded frame */
 .media {
-  margin: var(--space-4) 0;
+  margin: 0 0 var(--space-4);
 }
 
 .frame {
@@ -324,50 +296,95 @@ a:hover {
   border: 0;
 }
 
-.frame > iframe {
-  aspect-ratio: 16 / 10;
-  height: auto;
-}
-
 .placeholder {
   aspect-ratio: 16 / 10;
   background: var(--hairline);
 }
 
-.placeholder-wide {
-  aspect-ratio: 16 / 9;
-}
-
-.media figcaption {
-  margin-top: var(--space-1);
-  font-size: 1rem;
-  color: var(--text-muted);
-}
-
-/* Optional headline numbers, like the deck's impact row */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  gap: var(--space-3);
-  margin: var(--space-4) 0 0;
-}
-
-.stats div {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: var(--space-1);
-}
-
-.stats dd {
-  margin: 0;
-  font-size: clamp(2.5rem, 6vw, 3.25rem);
-  line-height: 1;
+.case-title {
+  font-size: clamp(2.25rem, 6.5vw, 3.5rem);
+  line-height: 1.08;
   letter-spacing: -0.02em;
+  margin-bottom: var(--space-2);
 }
 
-.stats dt {
+.case-summary {
+  font-size: 1.375rem;
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+
+.case-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  font-size: 1rem;
+  margin-bottom: var(--space-4);
+}
+
+.case-points {
+  margin: 0;
+  padding-left: 1.25em;
+  max-width: var(--measure);
+}
+
+.case-points li + li {
+  margin-top: var(--space-2);
+}
+
+.case-points li::marker {
+  color: var(--text-muted);
+}
+
+/* Previous and next case studies */
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--hairline);
+}
+
+.pager a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: 44px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.pager-next {
+  text-align: right;
+}
+
+.pager-label {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.pager-prev .pager-label::before {
+  content: "← " / "";
+}
+
+.pager-next .pager-label::after {
+  content: " →" / "";
+}
+
+.pager-title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.pager a:hover .pager-title {
+  text-decoration-thickness: 2px;
 }
 
 img {
