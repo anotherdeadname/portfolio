@@ -71,7 +71,6 @@
           summaryToMeta: [24, 0, 64, 4],
           metaToBullets: [40, 8, 96, 4],
           betweenBullets: [16, 0, 40, 2],
-          bulletsToPager: [64, 16, 160, 8],
         },
         { id: "portfolio-case-spacing", persist: true }
       );
@@ -84,7 +83,6 @@
         root.style.setProperty("--case-summary-gap", px(v.summaryToMeta));
         root.style.setProperty("--case-meta-gap", px(v.metaToBullets));
         root.style.setProperty("--case-bullet-gap", px(v.betweenBullets));
-        root.style.setProperty("--case-pager-gap", px(v.bulletsToPager));
       });
     }
   }

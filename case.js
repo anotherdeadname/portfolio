@@ -1,5 +1,5 @@
 // Case pages: play a short close animation before leaving through the
-// back button or the previous/next links. The browser's own Back button
+// back button. The browser's own Back button
 // can't be delayed, so it simply navigates. Skipped for reduced motion.
 
 (function () {
@@ -7,7 +7,7 @@
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   document.addEventListener("click", function (event) {
-    var link = event.target.closest("a.back, .pager a");
+    var link = event.target.closest("a.back");
     if (!link || reduced.matches) return;
     // Let new-tab and modified clicks behave normally
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
