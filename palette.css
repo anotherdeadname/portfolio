@@ -14,12 +14,33 @@
   /* lines */
   --hairline:      oklch(92% 0.004 280);   /* dividers, rules (decorative) */
   --border-strong: oklch(64% 0.008 280);   /* media frames, 3:1+ */
+
+  color-scheme: light;
+}
+
+/* Dark: follows the system unless the toggle chose light,
+   and applies whenever the toggle chose dark. Keep both blocks in sync. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          oklch(20% 0.015 280);   /* deck's dark slide */
+    --text:        oklch(97% 0.003 280);   /* 16.6:1 */
+    --text-muted:  oklch(72% 0.008 280);   /* 7.2:1 */
+
+    --accent:      oklch(97% 0.003 280);
+    --accent-ink:  oklch(97% 0.003 280);
+    --on-accent:   oklch(20% 0.015 280);
+
+    --hairline:      oklch(30% 0.012 280);
+    --border-strong: oklch(52% 0.008 280);
+
+    color-scheme: dark;
+  }
 }
 
 :root[data-theme="dark"] {
-  --bg:          oklch(20% 0.015 280);     /* deck's dark slide */
-  --text:        oklch(97% 0.003 280);     /* 16.6:1 */
-  --text-muted:  oklch(72% 0.008 280);     /* 7.2:1 */
+  --bg:          oklch(20% 0.015 280);
+  --text:        oklch(97% 0.003 280);
+  --text-muted:  oklch(72% 0.008 280);
 
   --accent:      oklch(97% 0.003 280);
   --accent-ink:  oklch(97% 0.003 280);
@@ -27,6 +48,8 @@
 
   --hairline:      oklch(30% 0.012 280);
   --border-strong: oklch(52% 0.008 280);
+
+  color-scheme: dark;
 }
 
 :focus-visible {
