@@ -90,6 +90,65 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-3);
+}
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.mark:hover {
+  color: var(--accent-ink);
+}
+
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -11px; /* optically align the icon with the column edge */
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--hairline);
+}
+
+/* Intro */
+.intro {
+  padding-top: clamp(0rem, 4vw, var(--space-4));
+}
+
+.intro h1 {
+  margin-bottom: var(--space-3);
+}
+
+.intro p {
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+
 img {
   max-width: 100%;
   height: auto;
