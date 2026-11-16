@@ -1,6 +1,6 @@
 // Light and dark toggle.
-// Follows the system setting until the visitor picks a theme, then
-// remembers that choice via data-theme on <html> and localStorage.
+// Dark by default; once the visitor picks a theme, that choice is
+// remembered via data-theme on <html> and localStorage.
 // Loaded in <head> (not deferred) so the saved theme applies before paint.
 
 (function () {
@@ -28,9 +28,7 @@
   }
 
   var stored = saved();
-  if (stored === "light" || stored === "dark") {
-    root.dataset.theme = stored;
-  }
+  root.dataset.theme = stored === "light" ? "light" : "dark";
 
   document.addEventListener("DOMContentLoaded", function () {
     var button = document.querySelector(".theme-toggle");
