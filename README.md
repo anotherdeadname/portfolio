@@ -31,6 +31,25 @@ Footer time and weather: `footer.js`. Light/dark toggle: `theme.js`. Case open/c
 
 Add `?tune` to any page's address (e.g. `index.html?tune`) for sliders that adjust spacing live. Press **Copy** in the panel to export values, then paste them into the matching tokens at the top of `styles.css`.
 
+## Editing in the browser
+
+Change text and photos by clicking on the page instead of hunting through HTML.
+
+1. In VS Code's terminal (**Ctrl+`**), start the editing server:
+
+   ```bash
+   python3 tools/edit-server.py
+   ```
+
+2. Open **http://127.0.0.1:8000/index.html?edit** (or any page with `?edit`, e.g. `work/dropbox.html?edit`). Links between pages keep `?edit`.
+3. **Text**: click any heading, row title, description, year, case summary, meta item, bullet or account handle and type. Enter finishes. Pasting comes in as plain text.
+4. **Photos**: drop an image onto a home-page thumbnail or a case hero, or use the **Images** folder in the panel. Heroes need alt text: fill in *Hero alt text* (you'll be asked if it's empty).
+5. **Account links** (side projects): change the link text and address in the panel.
+6. Press **Save to files** (or **Cmd+S**). The page's `.html` file is updated and new photos go into `assets/` (e.g. `assets/dropbox-thumb.jpg`, `assets/dropbox-hero.jpg`). Uploading again to the same slot replaces that file.
+7. Check `git diff`, then commit and push as usual. Stop the server with **Ctrl+C**.
+
+Only what you changed is written; the rest of the file stays exactly as it was. **Discard changes** reloads the page from the files. Bold, new bullets and new rows still need VS Code. The server only answers on this computer, and only writes page files in the root, `work/` and `side/` and images in `assets/`. Without `?edit`, or anywhere other than this server (Live Preview, the live site), the editor never loads.
+
 ## Saving and publishing (Source Control panel)
 
 - **Branches**: `main` is the live site. `explore/v1`, `v2`, `v3` are for trying ideas. Switch with the branch name in the bottom-left corner of VS Code.
