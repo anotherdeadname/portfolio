@@ -42,6 +42,22 @@ To publish an exploration: switch to `main`, Command Palette → *Git: Merge Bra
 
 If the live site looks old after publishing, hard-refresh with **Cmd+Shift+R**.
 
+## Saving and publishing from the terminal
+
+Open VS Code's built-in terminal with **Ctrl+`** (backtick). It starts in the project folder.
+
+```bash
+git status                       # what changed, and which branch you're on
+git add -A                       # stage every change
+git commit -m "Short message"    # save a snapshot, credited to you
+git push                         # send it to GitHub
+```
+
+- **Switch branch**: `git switch main` or `git switch explore/v1`.
+- **Publish an exploration**: `git switch main`, then `git merge explore/v1`, then `git push`. Live in about a minute.
+- **Get the latest from GitHub** (e.g. after Claude pushed something): `git pull`.
+- **Check you're credited**: `git log -3 --format='%h %an <%ae> %s'` should show `Axel McFarlane <333994804+anotherdeadname@users.noreply.github.com>`.
+
 ## Common edits
 
 Tip: **Cmd+P** jumps to any file by name, **Cmd+F** finds text in a file, **Cmd+Shift+F** finds it across the whole site. Search for the exact words you see on the page to find where they live.
