@@ -25,7 +25,15 @@ Plain HTML, CSS and a little JavaScript. No build step: edit a file, save, and i
 | Type, spacing, layout, animation | `styles.css` — sizes and spacing are tokens at the top (`--size-*`, `--space-*`, `--unit`) |
 | Images | `assets/` (put a thumbnail in a row's `<span class="thumb">` as an `<img>`) |
 
-Footer time and weather: `footer.js`. Light/dark toggle: `theme.js`. Case open/close animation: `case.js`. Case edge blur: `edges.js`.
+Footer time and weather: `footer.js`. Light/dark toggle: `theme.js`. Articles over the home page: `article.js`. Case open/close animation on a standalone page: `case.js`. Case edge blur: `edges.js`.
+
+### How case and side-project pages open
+
+Each page in `work/` and `side/` is still a complete HTML file, and that's where you edit it. On the site, though, it opens as an **article over the home page**: clicking a row loads the page's `<article>` into a layer on top, with the home page blurred and dimmed behind it. The address bar shows the page's own URL (e.g. `work/dropbox.html`), so links can be shared. Back button, Escape, a click on the blurred background or the browser's Back closes it.
+
+Visiting a page's URL directly sends you to the home page, which opens the article (that's the `<script src="../article.js">` line at the top of each page; keep it when copying the template). Only what's inside `<article>` is shown in the layer, plus the page's `<title>` and the back button's label.
+
+To see a page on its own, add `?solo` to its address (e.g. `work/dropbox.html?solo`). `?edit` and `?tune` also open pages on their own.
 
 ### Spacing tuner
 
@@ -120,8 +128,8 @@ Source Control panel → hover the changed file → the ↶ (Discard Changes) ar
 
 These are where a small change can break something subtle, so they're a better use of credits:
 
-- New or changed animation and motion (open/close build-in, hover blur and tilt, peeks, back-button pop, edge blur).
-- Anything in `case.js`, `edges.js`, `tune.js`, `footer.js` or `theme.js`.
+- New or changed animation and motion (article open/close and background blur, build-in, hover blur and tilt, peeks, back-button pop, edge blur).
+- Anything in `article.js`, `case.js`, `edges.js`, `tune.js`, `footer.js` or `theme.js`.
 - The `@keyframes` and animation blocks at the end of `styles.css`.
 - Layout changes (grid columns, the pinned back button, mobile breakpoints).
 - New colours that need contrast checks, or accessibility reviews.

@@ -780,3 +780,77 @@ html.is-scrolled .case-page::before {
   -webkit-mask-image: linear-gradient(to top, #000 30%, transparent);
   mask-image: linear-gradient(to top, #000 30%, transparent);
 }
+
+/* Articles over the home page (article.js): a case or side project opens as
+   a dialog layer. The home page stays behind it, blurred and dimmed, and
+   doesn't scroll. The layer scrolls on its own and reuses the case-page
+   spacing, back button, edge blur and open/close animations above. */
+html.has-article {
+  overflow: hidden;
+}
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.sheet:focus {
+  outline: none;
+}
+
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in oklch, var(--bg) 60%, transparent);
+  -webkit-backdrop-filter: blur(var(--sheet-blur, 14px));
+  backdrop-filter: blur(var(--sheet-blur, 14px));
+}
+
+.sheet .case {
+  position: relative;
+  max-width: var(--column);
+  margin-inline: auto;
+  padding: var(--back-top) var(--gutter) calc(var(--space-5) + var(--space-4));
+}
+
+/* The title takes focus when the article opens, for screen readers */
+.sheet .case-title:focus {
+  outline: none;
+}
+
+button.back {
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 783px) {
+  .sheet .case {
+    padding-top: calc(var(--back-top) + 44px + var(--space-3));
+  }
+}
+
+/* The blur fades in with the article and out as it closes */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sheet-fade-in {
+    from { opacity: 0; }
+  }
+
+  @keyframes sheet-fade-out {
+    to { opacity: 0; }
+  }
+
+  .sheet-backdrop,
+  .sheet.case-page::after {
+    animation: sheet-fade-in 0.35s ease both;
+  }
+
+  .sheet.is-leaving .sheet-backdrop,
+  .sheet.is-leaving.case-page::after {
+    animation: sheet-fade-out 0.3s ease both;
+  }
+}
